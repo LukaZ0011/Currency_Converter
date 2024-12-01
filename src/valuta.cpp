@@ -1,7 +1,5 @@
 #include "valuta.h"
 
-
-
 //getteri
 std::string Valuta::getCurrCode() {
     return currCode;
@@ -21,6 +19,10 @@ void Valuta::setCurrCode(std::string currCode) {
     }
 }
 
+void Valuta::setName(std::string name) {
+    this->name = name;
+}
+
 void Valuta::setRate(double rate) {
     if (rate < 0) {
         std::cout <<"Tečaj ne može biti manji od nule\n";
@@ -28,4 +30,11 @@ void Valuta::setRate(double rate) {
         this->rate = rate;
     }
 
+}
+
+//info
+void Valuta::info() {
+    std::cout << "\nOznaka: " << currCode << "\n";
+    std::cout << "Naziv:  " << name << "\n";
+    std::cout << "Tečaj naspram HRK: " << rate << "\n\n"; 
 }
