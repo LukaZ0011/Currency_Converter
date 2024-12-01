@@ -20,6 +20,8 @@ public:
         setCurrCode(this->currCode);
     }
 
+    //jos dvije dodatne metode (dodaj valutu, azuriraj tecaj)
+
 private:
     std::string currCode;
     double rate;
