@@ -25,8 +25,9 @@ public:
         setCurrCode(currCode);
     }
 
-    //jos dvije dodatne metode (dodaj valutu, azuriraj tecaj)
+    //jos jednu dodatnu metodu (azuriraj tecaj)
     void info();
+    Valuta& increaseRate(double postotak);
 
 private:
     std::string currCode;

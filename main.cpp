@@ -7,11 +7,11 @@ int main() {
     v1.setName("Hrvatska kuna");
     v1.setRate(2);
     v1.info();
-
-    v2.setCurrCode("EUR");
-    v2.setName("Euro");
-    v2.setRate(1);
-    v2.info();
+    double pos;
+    std::cin >> pos;
+    std::cout << "jao";
+    v1.increaseRate(pos).info();
+    
     std::cin.get();
     return 0;
 }

@@ -38,3 +38,12 @@ void Valuta::info() {
     std::cout << "Naziv:  " << name << "\n";
     std::cout << "Tečaj naspram HRK: " << rate << "\n\n"; 
 }
+
+Valuta& Valuta::increaseRate(double postotak) {
+    if (postotak > 0) {
+        rate += rate *(postotak / 100.0); 
+    } else {
+        std::cout << "Greška: postotak ne može biti negativan.\n";
+    }
+    return *this;
+}
