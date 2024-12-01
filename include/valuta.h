@@ -1,4 +1,6 @@
 #include <string>
+#include <iostream>
+#include <cctype>
 
 class Valuta {
 public:
@@ -12,7 +14,7 @@ public:
 
     //Konstruktori
     Valuta() {
-        setCurrCode("Unkown");  //defaultni
+        setCurrCode("UKW");  //defaultni
         setRate(0);
     }
 
