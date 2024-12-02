@@ -33,17 +33,12 @@ void Valuta::setRate(double rate) {
 }
 
 //konstruktori
-Valuta::Valuta() {
-        setCurrCode("UKW");  //defaultni
-        setName("Unknown");
-        setRate(0.0);
+Valuta::Valuta(std::string currCode, std::string name, double rate) {
+    setCurrCode(currCode);
+    setName(name);
+    setRate(rate);
 }
 
-Valuta::Valuta(std::string currCode):Valuta() { //delegiranje
-        setCurrCode(currCode);
-}
-
-//info
 void Valuta::info() {
     std::cout << "\nOznaka: " << currCode << "\n";
     std::cout << "Naziv:  " << name << "\n";

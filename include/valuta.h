@@ -2,6 +2,10 @@
 #include <iostream>
 #include <cctype>
 
+#define DEFAULT_CURRCODE "UKW"
+#define DEFAULT_NAME "Uknown"
+#define DEFAULT_RATE 0.0
+
 class Valuta {
 public:
     //Getteri
@@ -15,8 +19,7 @@ public:
     void setName(std::string);
 
     //Konstruktori
-    Valuta();
-    Valuta(std::string currCode);
+    Valuta(std::string currCode = DEFAULT_CURRCODE, std::string name = DEFAULT_NAME, double rate = DEFAULT_RATE);
 
     //jos jednu dodatnu metodu (azuriraj tecaj)
     void info();
