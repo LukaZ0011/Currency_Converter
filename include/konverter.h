@@ -15,6 +15,7 @@ class Konverter {
     //Konverter();
 
     Konverter& addCurrency(Valuta& v);
+    void info();
 
     private:
     std::string baseCurr;
