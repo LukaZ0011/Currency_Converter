@@ -1,16 +1,19 @@
 #include "valuta.h"
 
-//getteri
+//-------------------------------------------------getteri
 std::string Valuta::getCurrCode() {
     return currCode;
-};
+}
+
+std::string Valuta::getName() {
+    return name;
+}
 
 double Valuta::getRate(){
     return rate;
 }
 
-//setteri 
-
+//-------------------------------------------------setteri 
 Valuta& Valuta::setCurrCode(std::string currCode) {
     if (currCode.size() > 3) {
         std::cout << "Neispravan format valute u nazivu\n"; 
@@ -34,13 +37,15 @@ Valuta& Valuta::setRate(double rate) {
     }
     return *this;
 }
-//konstruktori
+
+//-------------------------------------------------konstruktori
 Valuta::Valuta(std::string currCode, std::string name, double rate) {
     setCurrCode(currCode);
     setName(name);
     setRate(rate);
 }
 
+//-------------------------------------------------dodatne metode
 void Valuta::info() {
     std::cout << "\nOznaka: " << currCode << "\n";
     std::cout << "Naziv:  " << name << "\n";

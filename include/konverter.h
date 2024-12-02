@@ -1,4 +1,5 @@
-#include "valuta.h"
+#pragma once
+#include <valuta.h>
 #include <vector>
 
 class Konverter {
@@ -9,10 +10,11 @@ class Konverter {
 
     //Setteri
     Konverter& setBaseCurr(std::string baseCurr);
-    Konverter& setCurrencies(std::vector<Valuta> currencies);
 
     //Konstruktori
-    Konverter();
+    //Konverter();
+
+    Konverter& addCurrency(Valuta& v);
 
     private:
     std::string baseCurr;

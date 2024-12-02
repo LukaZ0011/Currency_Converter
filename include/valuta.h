@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 #include <iostream>
 #include <cctype>
@@ -21,7 +22,7 @@ public:
     //Konstruktori
     Valuta(std::string currCode = DEFAULT_CURRCODE, std::string name = DEFAULT_NAME, double rate = DEFAULT_RATE);
 
-    //jos jednu dodatnu metodu (azuriraj tecaj)
+    //info, povecaj i smanji tecaj u postotku
     void info();
     Valuta& increaseRate(double postotak);
     Valuta& decreaseRate(double postotak);
