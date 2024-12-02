@@ -28,6 +28,7 @@ public:
     //jos jednu dodatnu metodu (azuriraj tecaj)
     void info();
     Valuta& increaseRate(double postotak);
+    Valuta& decreaseRate(double postotak);
 
 private:
     std::string currCode;

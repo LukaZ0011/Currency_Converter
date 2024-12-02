@@ -47,3 +47,12 @@ Valuta& Valuta::increaseRate(double postotak) {
     }
     return *this;
 }
+
+Valuta& Valuta::decreaseRate(double postotak) {
+    if (postotak > 0) {
+        rate -= rate *(postotak / 100.0); 
+    } else {
+        std::cout << "Greška: postotak ne može biti negativan.\n";
+    }
+    return *this;
+}

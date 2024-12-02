@@ -1,5 +1,5 @@
 #include <iostream>
-#include <valuta.h>
+#include "valuta.h"
 
 int main() {
     Valuta v1, v2;
@@ -9,9 +9,6 @@ int main() {
     v1.info();
     double pos;
     std::cin >> pos;
-    std::cout << "jao";
-    v1.increaseRate(pos).info();
-    
-    std::cin.get();
+    v1.decreaseRate(pos).info();
     return 0;
 }
