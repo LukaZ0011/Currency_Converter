@@ -3,6 +3,7 @@
 
 int main() {
     Valuta v1, v2;
+    v1.info();
     v1.setCurrCode("HRK");
     v1.setName("Hrvatska kuna");
     v1.setRate(2);

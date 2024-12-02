@@ -15,15 +15,8 @@ public:
     void setName(std::string);
 
     //Konstruktori
-    Valuta() {
-        setCurrCode("UKW");  //defaultni
-        setName("Unknown");
-        setRate(0.0);
-    }
-
-    Valuta(std::string currCode):Valuta() { //delegiranje
-        setCurrCode(currCode);
-    }
+    Valuta();
+    Valuta(std::string currCode);
 
     //jos jednu dodatnu metodu (azuriraj tecaj)
     void info();
