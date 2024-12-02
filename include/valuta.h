@@ -14,9 +14,9 @@ public:
     double getRate();
 
     //Setteri
-    void setCurrCode(std::string currCode);
-    void setRate(double rate);
-    void setName(std::string);
+    Valuta& setCurrCode(std::string currCode);
+    Valuta& setRate(double rate);
+    Valuta& setName(std::string name);
 
     //Konstruktori
     Valuta(std::string currCode = DEFAULT_CURRCODE, std::string name = DEFAULT_NAME, double rate = DEFAULT_RATE);

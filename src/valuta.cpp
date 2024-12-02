@@ -10,28 +10,30 @@ double Valuta::getRate(){
 }
 
 //setteri 
-void Valuta::setCurrCode(std::string currCode) {
+
+Valuta& Valuta::setCurrCode(std::string currCode) {
     if (currCode.size() > 3) {
         std::cout << "Neispravan format valute u nazivu\n"; 
     } else {
         for (char& c : currCode) c = std::toupper(static_cast<unsigned char>(c));
         this->currCode = currCode;
     }
+    return *this;
 }
 
-void Valuta::setName(std::string name) {
+Valuta& Valuta::setName(std::string name) {
     this->name = name;
+    return *this;
 }
 
-void Valuta::setRate(double rate) {
+Valuta& Valuta::setRate(double rate) {
     if (rate < 0) {
         std::cout <<"Tečaj ne može biti manji od nule\n";
     } else {
         this->rate = rate;
     }
-
+    return *this;
 }
-
 //konstruktori
 Valuta::Valuta(std::string currCode, std::string name, double rate) {
     setCurrCode(currCode);
