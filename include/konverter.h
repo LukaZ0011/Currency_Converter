@@ -1,6 +1,7 @@
 #pragma once
 #include <valuta.h>
 #include <vector>
+#define BASE_CURRENCY "HRK"
 
 class Konverter {
     public:
@@ -10,9 +11,11 @@ class Konverter {
 
     //Setteri
     Konverter& setBaseCurr(std::string baseCurr);
+    Konverter& setCurrencies(std::vector<Valuta> currencies);
 
     //Konstruktori
-    //Konverter();
+    Konverter(std::string baseCurr = BASE_CURRENCY, std::vector<Valuta> currencies = {});
+
 
     Konverter& addCurrency(Valuta& v);
     void info();

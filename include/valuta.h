@@ -4,7 +4,7 @@
 #include <cctype>
 
 #define DEFAULT_CURRCODE "UKW"
-#define DEFAULT_NAME "Uknown"
+#define DEFAULT_NAME "Unknown"
 #define DEFAULT_RATE 0.0
 
 class Valuta {
