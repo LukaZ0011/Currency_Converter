@@ -1,15 +1,21 @@
 #include "user.h"
 
-User::User(std::string user, std::string pass) : username(user), password(pass) {}
+User::User(const std::string &user, const std::string &pass, double fee=0.0)
+    : username(user), password(pass), wallet(fee) {}
 
-bool User::login(std::string user, std::string pass)
+bool User::login(const std::string &inputUser, const std::string &inputPass) const
 {
-    return (user == username && pass == password);
+    return username == inputUser && password == inputPass;
 }
 
 User::~User() {}
 
-std::string User::getUsername()
+std::string User::getUsername() const
 {
     return username;
+}
+
+Wallet &User::getWallet()
+{
+    return wallet;
 }
