@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include "vipUser.h"
 
 
 int main() {
