@@ -10,7 +10,7 @@ protected:
     Wallet wallet;
 
 public:
-    User(const std::string &user, const std::string &pass, double fee = 0.0);
+    User(const std::string &username, const std::string &password, double fee = 0.0);
     virtual ~User();
 
     virtual bool login(const std::string &inputUser, const std::string &inputPass) const;

@@ -1,6 +1,6 @@
 #include "user.h"
 
-User::User(const std::string &user, const std::string &pass, double fee=0.0)
+User::User(const std::string &user, const std::string &pass, double fee)
     : username(user), password(pass), wallet(fee) {}
 
 bool User::login(const std::string &inputUser, const std::string &inputPass) const
