@@ -16,6 +16,6 @@ public:
     virtual bool login(const std::string &inputUser, const std::string &inputPass) const;
 
     std::string getUsername() const;
-    
+
     Wallet &getWallet();
 };
