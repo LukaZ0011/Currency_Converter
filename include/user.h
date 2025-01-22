@@ -1,6 +1,8 @@
+#pragma once
 #include <string>
 
-class User {
+class User
+{
 protected:
     std::string username;
     std::string password;
