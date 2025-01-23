@@ -1,19 +1,26 @@
 #pragma once
+#include <string>
+#include <unordered_map>
 
 class Wallet
 {
 private:
-    double balance;
+    std::unordered_map<std::string, double> balances;
+    std::unordered_map<std::string, double> conversionRates;
     double transactionFee;
 
 public:
     Wallet(double fee = 0.0);
 
-    double getBalance() const;
+    double getBalance(const std::string &currency) const;
 
-    void deposit(double amount);
+    void deposit(const std::string &currency, double amount);
 
-    bool withdraw(double amount);
+    bool withdraw(const std::string &currency, double amount);
 
-    bool makeTransaction(double amount);
+    bool makeTransaction(const std::string &currency, double amount);
+
+    bool convertCurrency(const std::string &fromCurrency, const std::string &toCurrency, double amount);
+
+    void setConversionRate(const std::string &currency, double rate);
 };

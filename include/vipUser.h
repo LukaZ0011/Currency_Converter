@@ -1,6 +1,7 @@
 #pragma once
 #include "user.h"
 
+
 class VipUser : public User
 {
 public:
