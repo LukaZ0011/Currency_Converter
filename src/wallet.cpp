@@ -11,13 +11,13 @@ double Wallet::getBalance(const std::string &currency) const {
 }
 
 void Wallet::deposit(const std::string &currency, double amount) {
-    balances[currency] += amount;
+    balances[currency] += (amount - amount * transactionFee);
 }
 
 bool Wallet::withdraw(const std::string &currency, double amount) {
     auto it = balances.find(currency);
     if (it != balances.end() && it->second >= amount) {
-        it->second -= amount;
+        it->second -= (amount + amount * transactionFee);
         return true;
     }
     return false;

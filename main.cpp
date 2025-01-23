@@ -6,7 +6,7 @@
 void displayUserMenu()
 {
     std::cout << "1. Deposit money\n";
-    std::cout << "2. Make a transaction\n";
+    std::cout << "2. Withdraw\n";
     std::cout << "3. Convert currency\n";
     std::cout << "4. Check balance\n";
     std::cout << "5. Logout\n";
