@@ -23,4 +23,6 @@ public:
     bool convertCurrency(const std::string &fromCurrency, const std::string &toCurrency, double amount);
 
     void setConversionRate(const std::string &currency, double rate);
+
+    std::unordered_map<std::string, double> getConversionRates() const;
 };

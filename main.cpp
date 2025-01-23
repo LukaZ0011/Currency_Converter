@@ -1,12 +1,31 @@
 #include <iostream>
+#include <map>
 #include "vipUser.h"
 #include "defUser.h"
 
+void displayUserMenu()
+{
+    std::cout << "1. Deposit money\n";
+    std::cout << "2. Make a transaction\n";
+    std::cout << "3. Convert currency\n";
+    std::cout << "4. Check balance\n";
+    std::cout << "5. Logout\n";
+    std::cout << "Enter your choice: ";
+}
+
+//dodati kontejnerski klassu npr banka koja pohranjuje sve 
+
 int main()
 {
-    // Create objects of VIPUser and DefUser
-    User *user1 = new VipUser("Luka", "123");
-    User *user2 = new DefUser("Luka", "000");
+    // Create objects of DefUser and VipUser
+    User *defUser = new DefUser("Luka", "123");
+    User *vipUser = new VipUser("Marko", "123");
+
+    // Set conversion rates
+    defUser->getWallet().setConversionRate("EUR", 1.0);
+    defUser->getWallet().setConversionRate("USD", 1.1); // Assume 1 USD = 1.1 EUR
+    vipUser->getWallet().setConversionRate("EUR", 1.0);
+    vipUser->getWallet().setConversionRate("USD", 1.1);
 
     std::string inputUser, inputPass;
 
@@ -16,41 +35,94 @@ int main()
     std::cout << "Enter password: ";
     std::cin >> inputPass;
 
-    // Check login for VIPUser
-    if (user1->login(inputUser, inputPass))
+    User *user = nullptr;
+    if (defUser->login(inputUser, inputPass))
     {
-        std::cout << "VIP User login successful! Welcome, " << user1->getUsername() << ".\n";
-        user1->getWallet().deposit(1000); // Deposit some money
-        if (user1->getWallet().makeTransaction(100)) {
-            std::cout << "Transaction successful! New balance: " << user1->getWallet().getBalance() << "\n";
-        } else {
-            std::cout << "Transaction failed. Insufficient funds.\n";
-        }
+        user = defUser;
+    }
+    else if (vipUser->login(inputUser, inputPass))
+    {
+        user = vipUser;
     }
     else
     {
-        std::cout << "VIP User login failed. Incorrect username or password.\n";
+        std::cout << "Login failed. Incorrect username or password.\n";
+        delete defUser;
+        delete vipUser;
+        return 1;
     }
 
-    // Check login for DefUser
-    if (user2->login(inputUser, inputPass))
+    std::cout << "Login successful! Welcome, " << user->getUsername() << ".\n";
+    int userChoice;
+    while (true)
     {
-        std::cout << "Default User login successful! Welcome, " << user2->getUsername() << ".\n";
-        user2->getWallet().deposit(1000); // Deposit some money
-        if (user2->getWallet().makeTransaction(100)) {
-            std::cout << "Transaction successful! New balance: " << user2->getWallet().getBalance() << "\n";
-        } else {
-            std::cout << "Transaction failed. Insufficient funds.\n";
+        displayUserMenu();
+        std::cin >> userChoice;
+
+        if (userChoice == 5)
+        {
+            break;
         }
-    }
-    else
-    {
-        std::cout << "Default User login failed. Incorrect username or password.\n";
+
+        std::string currency;
+        std::string toCurrency;
+        double amount;
+
+        switch (userChoice)
+        {
+        case 1:
+            std::cout << "Enter currency: ";
+            std::cin >> currency;
+            std::cout << "Enter amount: ";
+            std::cin >> amount;
+            user->getWallet().deposit(currency, amount);
+            std::cout << "Deposit successful!\n";
+            break;
+        case 2:
+            std::cout << "Enter currency: ";
+            std::cin >> currency;
+            std::cout << "Enter amount: ";
+            std::cin >> amount;
+            if (user->getWallet().withdraw(currency, amount))
+            {
+                std::cout << "Transaction successful! New balance: " << user->getWallet().getBalance(currency) << " " << currency << "\n";
+            }
+            else
+            {
+                std::cout << "Transaction failed. Insufficient funds.\n";
+            }
+            break;
+        case 3:
+            std::cout << "Enter from currency: ";
+            std::cin >> currency;
+            std::cout << "Enter to currency: ";
+            std::cin >> toCurrency;
+            std::cout << "Enter amount: ";
+            std::cin >> amount;
+            if (user->getWallet().convertCurrency(currency, toCurrency, amount))
+            {
+                std::cout << "Conversion successful! New balance: " << user->getWallet().getBalance(toCurrency) << " " << toCurrency << "\n";
+            }
+            else
+            {
+                std::cout << "Conversion failed. Insufficient funds or invalid currency.\n";
+            }
+            break;
+        case 4:
+            std::cout << "Balances:\n";
+            for (const auto& rate : user->getWallet().getConversionRates()) {
+                std::cout << rate.first << ": " << user->getWallet().getBalance(rate.first) << "\n";
+            }
+            break;
+        default:
+            std::cout << "Invalid choice. Please try again.\n";
+            break;
+        }
     }
 
     // Clean up memory
-    delete user1;
-    delete user2;
+    delete defUser;
+    delete vipUser;
 
     return 0;
 }

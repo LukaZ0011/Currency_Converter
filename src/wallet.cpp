@@ -23,30 +23,26 @@ bool Wallet::withdraw(const std::string &currency, double amount) {
     return false;
 }
 
+//UNCOMPLETED, NEED AN END USER 
 bool Wallet::makeTransaction(const std::string &currency, double amount) {
-    double totalAmount = amount + (amount * transactionFee);
-    return withdraw(currency, totalAmount);
+    return withdraw(currency, amount);
 }
 
 bool Wallet::convertCurrency(const std::string &fromCurrency, const std::string &toCurrency, double amount) {
     auto fromRateIt = conversionRates.find(fromCurrency);
     auto toRateIt = conversionRates.find(toCurrency);
-
-    if (fromRateIt != conversionRates.end() && toRateIt != conversionRates.end()) {
-        double fromRate = fromRateIt->second;
-        double toRate = toRateIt->second;
-
-        double amountInBaseCurrency = amount / fromRate;
-        double convertedAmount = amountInBaseCurrency * toRate;
-
-        if (withdraw(fromCurrency, amount)) {
-            deposit(toCurrency, convertedAmount);
-            return true;
-        }
+    if (fromRateIt != conversionRates.end() && toRateIt != conversionRates.end() && withdraw(fromCurrency, amount)) {
+        double convertedAmount = amount * (toRateIt->second / fromRateIt->second);
+        deposit(toCurrency, convertedAmount);
+        return true;
     }
     return false;
 }
 
 void Wallet::setConversionRate(const std::string &currency, double rate) {
     conversionRates[currency] = rate;
+}
+
+std::unordered_map<std::string, double> Wallet::getConversionRates() const {
+    return conversionRates;
 }

@@ -11,6 +11,7 @@ protected:
 
 public:
     User(const std::string &username, const std::string &password, double fee = 0.0);
+
     virtual ~User();
 
     virtual bool login(const std::string &inputUser, const std::string &inputPass) const;
