@@ -7,10 +7,9 @@ void Bank::addUser(User *user)
 
 double Bank::bankPool() const
 {
-    // Implementation of bankPool method
+    // Placeholder implementation
+    return 0.0;
 }
-
-
 
 void Bank::listUsernames() const
 {

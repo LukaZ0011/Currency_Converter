@@ -5,12 +5,15 @@
 class Wallet
 {
 private:
+    std::string name;
     std::unordered_map<std::string, double> balances;
     std::unordered_map<std::string, double> conversionRates;
     double transactionFee;
 
 public:
-    Wallet(double fee = 0.0);
+    Wallet(double fee = 0.0, std::string name = "undefined");
+
+    std::string getName() const;
 
     double getBalance(const std::string &currency) const;
 

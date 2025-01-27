@@ -1,5 +1,6 @@
 #include "bank.h"
 #include "user.h"
+#include <iostream>
 
 Bank bank; // Global Bank object
 
@@ -11,6 +12,11 @@ int main() {
 
     // List usernames stored in the Bank
     bank.listUsernames();
+
+    // Test getName from Wallet class
+    std::cout << "Wallet Name for Alice: " << user1.getWallet().getName() << std::endl;
+    std::cout << "Wallet Name for Bob: " << user2.getWallet().getName() << std::endl;
+    std::cout << "Wallet Name for Charlie: " << user3.getWallet().getName() << std::endl;
 
     return 0;
 }

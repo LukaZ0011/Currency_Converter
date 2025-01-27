@@ -4,7 +4,7 @@
 extern Bank bank; // Assuming you have a global Bank object
 
 User::User(const std::string &user, const std::string &pass, double fee)
-    : username(user), password(pass), wallet(fee) {
+    : username(user), password(pass), wallet(fee, user + "'s Wallet") {
     bank.addUser(this);
 }
 

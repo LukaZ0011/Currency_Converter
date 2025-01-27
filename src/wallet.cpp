@@ -1,6 +1,10 @@
 #include "wallet.h"
 
-Wallet::Wallet(double fee) : transactionFee(fee) {}
+Wallet::Wallet(double fee, std::string name) : transactionFee(fee), name(name) {}
+
+std::string Wallet::getName() const {
+    return name;
+}
 
 double Wallet::getBalance(const std::string &currency) const {
     auto it = balances.find(currency);
