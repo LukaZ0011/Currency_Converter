@@ -10,7 +10,7 @@ private:
     std::vector<User *> users;
 
 public:
-    template <typename T> T bankPool() const;
     void addUser(User *user);
+    double bankPool() const;
     void listUsernames() const;
 };
