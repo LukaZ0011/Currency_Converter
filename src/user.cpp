@@ -24,3 +24,7 @@ Wallet &User::getWallet()
 {
     return wallet;
 }
+
+void User::displayUserType() const {
+    std::cout << "User Type: Base User" << std::endl;
+}

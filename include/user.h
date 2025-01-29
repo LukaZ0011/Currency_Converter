@@ -19,4 +19,6 @@ public:
     std::string getUsername() const;
 
     Wallet &getWallet();
+
+    virtual void displayUserType() const;
 };
