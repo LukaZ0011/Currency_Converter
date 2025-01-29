@@ -12,5 +12,5 @@ private:
 public:
     void addUser(User *user);
     double bankPool() const;
-    void listUsernames() const;
+    void listWallets() const;
 };

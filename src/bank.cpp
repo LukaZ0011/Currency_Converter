@@ -11,10 +11,11 @@ double Bank::bankPool() const
     return 0.0;
 }
 
-void Bank::listUsernames() const
+void Bank::listWallets() const
 {
+    std::cout << "Wallets:" << std::endl;
     for (const auto &user : users)
     {
-        std::cout << "Username: " << user->getUsername() << std::endl;
+        std::cout << " - " << user->getWallet().getName() << std::endl;
     }
 }
