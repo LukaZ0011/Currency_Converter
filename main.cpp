@@ -21,5 +21,7 @@ int main()
 
     bank.listWallets();
 
+    //moras jos napracviti template
+
     return 0;
 }
