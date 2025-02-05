@@ -2,17 +2,20 @@
 #include <stdexcept>
 #include <string>
 
-class UserException : public std::runtime_error {
+class UserException : public std::runtime_error
+{
 public:
-    explicit UserException(const std::string &message);
+    UserException(const std::string &message);
 };
 
-class WalletException : public std::runtime_error {
+class WalletException : public std::runtime_error
+{
 public:
-    explicit WalletException(const std::string &message);
+    WalletException(const std::string &message);
 };
 
-class BankException : public std::runtime_error {
+class BankException : public std::runtime_error
+{
 public:
-    explicit BankException(const std::string &message);
+    BankException(const std::string &message);
 };

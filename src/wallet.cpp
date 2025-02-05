@@ -15,19 +15,24 @@ double Wallet::getBalance(const std::string &currency) const {
 }
 
 void Wallet::deposit(const std::string &currency, double amount) {
+    if (amount < 0) {
+        throw WalletException("Deposit amount cannot be negative");
+    }
     balances[currency] += (amount - amount * transactionFee);
 }
 
 bool Wallet::withdraw(const std::string &currency, double amount) {
+    if (amount < 0) {
+        throw WalletException("Withdrawal amount cannot be negative");
+    }
     auto it = balances.find(currency);
     if (it != balances.end() && it->second >= amount) {
         it->second -= (amount + amount * transactionFee);
         return true;
     }
-    return false;
+    throw WalletException("Insufficient funds for withdrawal");
 }
 
-//UNCOMPLETED, NEED AN END USER 
 bool Wallet::makeTransaction(const std::string &currency, double amount) {
     return withdraw(currency, amount);
 }
@@ -40,10 +45,13 @@ bool Wallet::convertCurrency(const std::string &fromCurrency, const std::string 
         deposit(toCurrency, convertedAmount);
         return true;
     }
-    return false;
+    throw WalletException("Currency conversion failed");
 }
 
 void Wallet::setConversionRate(const std::string &currency, double rate) {
+    if (rate <= 0) {
+        throw WalletException("Conversion rate must be positive");
+    }
     conversionRates[currency] = rate;
 }
 
